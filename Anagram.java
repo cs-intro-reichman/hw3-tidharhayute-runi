@@ -56,8 +56,12 @@ public class Anagram {
 		String newStr = "";
 
 		for (int i = 0; i < str.length(); i++) {
-				if ((str.charAt(i) - 0) > 90) newStr = newStr + str.charAt(i);
+			if ((str.charAt(i) - 0) > 64 || (str.charAt(i) - 0) == 32) {
+				if ((str.charAt(i) - 0) > 90 || (str.charAt(i) - 0) == 32) newStr = newStr + str.charAt(i);
 				else newStr = newStr + (char) (str.charAt(i) + 32);
+			} 
+
+				
 		}
 
 		return newStr;
