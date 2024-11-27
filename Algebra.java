@@ -23,18 +23,31 @@ public class Algebra {
 	}  
 
 	public static int plus(int x1, int x2) {
-		for (int i=0; i < x2; i++) {
-			x1++;
+		if (x2 > 0) {
+			for (int i = 0; i < x2; i++) {
+				x1++;
+			}
+		} else {
+			for (int i = 0; i > x2; i--) {
+				x1++;
+			}
 		}
-
+		
 		return x1;
 	}
 
 
 	public static int minus(int x1, int x2) {
-		for (int i=0; i < x2; i++) {
-			x1--;
+		if (x2 > 0) {
+			for (int i = 0; i < x2; i++) {
+				x1--;
+			}
+		} else {
+			for (int i = 0; i > x2; i--) {
+				x1--;
+			}
 		}
+		
 
 		return x1;
 	}
@@ -42,7 +55,7 @@ public class Algebra {
 	public static int times(int x1, int x2) {
 		int temp = x1;
 
-		for (int i=0; i < x2 - 1; i++) {
+		for (int i = 0; i < x2 - 1; i++) {
 			x1 = plus(x1, temp);
 		}
 
@@ -53,7 +66,9 @@ public class Algebra {
 	public static int pow(int x, int n) {
 		int temp = x;
 
-		for (int i=0; i < n - 1; i++) {
+		if (n == 0 ) return 1;
+
+		for (int i = 0; i < n - 1; i++) {
 			x = times(x, temp);
 		}
 

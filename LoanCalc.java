@@ -46,12 +46,12 @@ public class LoanCalc {
 		double g = loan / n;
 		iterationCounter = 0;
 
-		while (Math.abs(endBalance(loan, rate, n, g)) >= epsilon) {
+		while ((Math.abs(endBalance(loan, rate, n, g)) >= epsilon) && (g <= loan)) {
 			g += epsilon;
 			iterationCounter++;
 		}
 
-		return iterationCounter;
+		return g;
     }
     
     // Uses bisection search to compute an approximation of the periodical payment 
