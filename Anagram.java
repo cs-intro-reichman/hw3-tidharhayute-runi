@@ -28,7 +28,24 @@ public class Anagram {
 
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
-		// Replace the following statement with your code
+		str1 = removeSpaces(str1);
+		str2 = removeSpaces(str2);
+
+		if(str1.length() != str2.length()) return false;
+
+		int count = 0;
+
+		for (int i = 0; i < str1.length(); i++) {
+			for (int j = 0; j < str1.length(); j++) {
+				if(str1.charAt(i) == str2.charAt(j)){
+					str2 = str2.substring(0, j) + " " + str2.substring(j+1);
+					count++;
+				}
+			}
+		}
+
+		if (count == str1.length()) return true;
+
 		return false;
 	}
 	   
@@ -36,14 +53,47 @@ public class Anagram {
 	// to lower-case, and all the other characters are deleted, except for spaces, which are left
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
 	public static String preProcess(String str) {
-		// Replace the following statement with your code
-		return "";
+		String newStr = "";
+
+		for (int i = 0; i < str.length(); i++) {
+				if ((str.charAt(i) - 0) > 90) newStr = newStr + str.charAt(i);
+				else newStr = newStr + (char) (str.charAt(i) + 32);
+		}
+
+		return newStr;
+	} 
+
+	public static String removeSpaces(String str) {
+		String newStr = "";
+
+		for (int i = 0; i < str.length(); i++) {
+			if ((str.charAt(i) - 0) != 32){
+				if ((str.charAt(i) - 0) > 90) newStr = newStr + str.charAt(i);
+				else newStr = newStr + (char) (str.charAt(i) + 32);
+			}
+		}
+
+		return newStr;
 	} 
 	   
 	// Returns a random anagram of the given string. The random anagram consists of the same
 	// characters as the given string, re-arranged in a random order. 
 	public static String randomAnagram(String str) {
-		// Replace the following statement with your code
-		return "";
+		String newStr = "";
+
+		int r;
+
+		int i = 0;
+		int strLength = str.length();
+
+		while (i < strLength) {
+			r = (int) (Math.random() * str.length());
+			newStr += str.charAt(r);
+
+			str = str.substring(0, r) + str.substring(r+1);
+			i++;
+		}
+
+		return newStr;
 	}
 }
